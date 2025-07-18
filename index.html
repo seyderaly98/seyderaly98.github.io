@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Переадресация...</title>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             const queryParams = new URLSearchParams(window.location.search);
             const app = queryParams.get("app"); // значение параметра ?app=
 
@@ -15,20 +15,20 @@
                     android: "https://play.google.com/store/apps/details?id=com.MFMDEnterprise.apppddtest"
                 },
                 autodrom: {
-                    ios: "https://apps.apple.com/app/id0000000000", <!-- 👈 замени на реальную ссылку -->
-                    android: "https://play.google.com/store/apps/details?id=com.example.autodrom" <!-- 👈 замени на реальную ссылку -->
-                }
+                    ios: "https://apps.apple.com/kz/app/autodromkz/id6736940882", 
+                    android: "https://play.google.com/store/apps/details?id=com.MFMDEnterprise.autodromkz&hl=en"
+                    }
+                };
+
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        if (app && apps[app]) {
+            const targetUrl = isIOS ? apps[app].ios : apps[app].android;
+            window.location.href = targetUrl;
+        } else {
+            document.getElementById("content").style.display = "block";
+        }
             };
-
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-            if (app && apps[app]) {
-                const targetUrl = isIOS ? apps[app].ios : apps[app].android;
-                window.location.href = targetUrl;
-            } else {
-                document.getElementById("content").style.display = "block";
-            }
-        };
     </script>
 </head>
 <body>
